@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  app:
+    image: liopa/visual-dtw:test
+    container_name: test-app
+    build:
+      target: testing
+    environment:
+      FLASK_ENV: testing
+      DATABASE_NAME: testing
+    ports:
+      - 5000:5000
+
+  cfe:
+    << : *default-cfe
+    container_name: test-face-cropper-microservice
+
+  db:
+    << : *default-db
+    container_name: test-db
+    environment:
+      << : *default-db-environment
+      POSTGRES_DB: testing
+
+  redis:
+    container_name: test-redis
+    ports:
+      - 6379:6379
+
+  celery:
+    container_name: test-celery
+    environment:
+      DATABASE_NAME: testing

@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  app:
+    image: liopa/visual-dtw:dev
+    container_name: dev-app
+    build:
+      target: development
+    environment:
+      FLASK_ENV: development
+      DATABASE_NAME: development
+    ports:
+      - 5000:5000
+
+  cfe:
+    << : *default-cfe
+    container_name: dev-face-cropper-microservice
+    ports:
+      - 5001:5001
+
+  db:
+    << : *default-db
+    container_name: dev-db
+    environment:
+      << : *default-db-environment
+      POSTGRES_DB: development
+    volumes:
+      - volume:/var/lib/postgresql/data
+
+  redis:
+    container_name: dev-redis
+    ports:
+      - 6379:6379
+
+  celery:
+    container_name: dev-celery
+    environment:
+      DATABASE_NAME: development
+
+volumes:
+  volume:

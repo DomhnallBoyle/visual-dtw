@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  app:
+    image: liopa/visual-dtw:research
+    container_name: research-app
+    build:
+      target: research
+    environment:
+      FLASK_ENV: research
+      DATABASE_NAME: research
+    ports:
+      - 5000:5000
+
+  cfe:
+    << : *default-cfe
+    container_name: research-face-cropper-microservice
+
+  db:
+    << : *default-db
+    container_name: research-db
+    environment:
+      << : *default-db-environment
+      POSTGRES_DB: research
+    volumes:
+      - volume:/var/lib/postgresql/data
+
+  redis:
+    container_name: research-redis
+
+volumes:
+  volume:

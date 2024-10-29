@@ -1,0 +1,16 @@
+.coverage
+.idea
+.tox
+*.db
+__pycache__
+.pytest_cache
+*.pyc
+app.log
+*.csv
+*.env
+*.pkl
+schema.sql
+*.lprof
+timer.txt
+*.pem
+docker-compose.config.yml

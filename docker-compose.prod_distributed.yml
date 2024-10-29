@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  app:
+    environment:
+      CFE_HOST: ${CFE_HOST}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_VERIFY: ${DATABASE_VERIFY}
+
+  celery:
+    environment:
+      CFE_HOST: ${CFE_HOST}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_VERIFY: ${DATABASE_VERIFY}
+
+  postgres-exporter:
+    environment:
+      DATA_SOURCE_URI: ${DATABASE_HOST}:5432/production?sslmode=verify-full&sslrootcert=${DATABASE_VERIFY}
+    volumes:
+      - /shared:/shared

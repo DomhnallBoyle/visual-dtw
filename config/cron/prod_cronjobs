@@ -1,0 +1,3 @@
+# Queue list ids for session selection every 2 hours
+0 */2 * * * cd /opt/visual-dtw && env - `cat /container.env` python3 scripts/session_selection.py queue_list_ids >> /var/log/cron.log 2>&1
+# This extra line makes it a valid cron

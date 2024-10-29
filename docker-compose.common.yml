@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+    depends_on:
+      - redis
+    healthcheck:
+      test: python3 scripts/health_check.py
+      interval: 5m
+    environment:
+      PORT: 5000
+      DATABASE_PORT: 5432
+      DATABASE_HOST: db
+      SQLALCHEMY_ECHO: ${SQLALCHEMY_ECHO:-False}
+      OPENBLAS_NUM_THREADS: 1
+    volumes:
+      - ./:/opt/visual-dtw
+      - /shared:/shared
+
+  redis:
+    image: redis
+    healthcheck:
+      test: redis-cli ping
+      interval: 5m
+    entrypoint: redis-server --save "" --appendonly no
+
+  celery:
+    image: liopa/visual-dtw-celery:latest
+    build:
+      context: .
+      target: celery
+    healthcheck:
+      test: celery inspect ping || exit 1
+      interval: 5m
+    depends_on:
+      - app
+      - redis
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      OPENBLAS_NUM_THREADS: 1
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+    volumes:
+      - ./:/opt/visual-dtw
+      - /shared:/shared

@@ -1,0 +1,1 @@
+{"frames_per_second": 25, "frame_step": 1, "delta_1": 100, "delta_2": 0, "dtw_top_n_tail": 0, "dtw_transition_cost": 0.1, "dtw_beam_width": 0, "dtw_distance_metric": "euclidean_squared", "knn_type": 2, "knn_k": 50, "features": "AE_norm"}

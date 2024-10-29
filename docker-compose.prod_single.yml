@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+  app:
+    networks:
+      - database_network
+      - cfe_network
+
+  cfe:
+    << : *default-cfe
+    image: liopa/face-cropper-microservice:prod
+    build:
+      context: ../face-cropper-microservice
+      target: production
+    container_name: prod-face-cropper-microservice
+    restart: always
+    networks:
+      - cfe_network
+      - redis_network
+    environment:
+      NUM_CFE_MODELS: ${NUM_CFE_MODELS:-1}
+
+  db:
+    << : *default-db
+    container_name: prod-db
+    restart: always
+    environment:
+      POSTGRES_DB: production
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - volume:/var/lib/postgresql/data
+    networks:
+      - database_network
+
+  celery:
+    networks:
+      - database_network
+
+  postgres-exporter:
+    environment:
+      DATA_SOURCE_URI: db:5432/production?sslmode=disable
+    networks:
+      - database_network
+
+
+networks:
+  database_network:
+    driver: bridge
+
+  cfe_network:
+    driver: bridge

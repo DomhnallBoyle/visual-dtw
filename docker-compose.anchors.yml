@@ -1,0 +1,25 @@
+x-cfe: &default-cfe
+  image: liopa/face-cropper-microservice:dev
+  build:
+    context: ../face-cropper-microservice
+    target: development
+  environment:
+    FACE_PROCESSOR_CONFIG: ${FACE_PROCESSOR_CONFIG:-CFEConfig_AE1-DCT_V3.xml}
+  healthcheck:
+    test: python3 health_check.py
+    interval: 5m
+  runtime: nvidia
+  volumes:
+    - /shared:/shared
+
+x-db: &default-db
+  image: postgres:12-alpine
+  healthcheck:
+    test: pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER || exit 1
+    interval: 5m
+  ports:
+    - 5432:5432
+
+x-db-environment: &default-db-environment
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: password

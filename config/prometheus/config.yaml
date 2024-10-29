@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+  external_labels:
+      monitor: 'visual-dtw'
+
+scrape_configs:
+  - job_name: 'node'
+
+    static_configs:
+         - targets: ['prod-node-exporter:9100', 'prod-cadvisor:8080', 'prod-postgres-exporter:9187']

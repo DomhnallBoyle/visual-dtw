@@ -1,0 +1,295 @@
+[
+  {
+    "model": "PAVAUser",
+    "records": [
+      {
+        "id": "6ca0349f-e820-40c1-93f9-0a6aff85c62d"
+      },
+      {
+        "id": "f3149387-0912-4044-a553-e34c69379e3b"
+      },
+      {
+        "id": "4ea2eb48-b1e8-4d7f-ac57-1587912ca335"
+      },
+      {
+        "id": "1ed4abdc-6b8c-4753-b560-3a7dfa5189a1"
+      },
+      {
+        "id": "49540448-e1c2-46e9-9bc8-247eb01aac9b",
+        "default_list": true
+      },
+      {
+        "id": "8960c8b0-45e4-40ca-9a6b-9b639abdf112"
+      },
+      {
+        "id": "e1dbb67a-0c4c-4b27-a5c7-608e5dfba23e"
+      },
+      {
+        "id": "1b7296b8-a7ac-4c9c-a7ed-bb8c6c89795c"
+      },
+      {
+        "id": "2ca427e6-58f5-46b4-9d4c-94617b4b743b"
+      }
+    ]
+  },
+  {
+    "model": "PAVAList",
+    "records": [
+      {
+        "id": "d000ae57-5576-46c8-aabe-8e47602bbf03",
+        "user_id": "6ca0349f-e820-40c1-93f9-0a6aff85c62d",
+        "name": "Personal List"
+      },
+      {
+        "id": "27a8dc84-c2f0-43a3-b04b-da01eb037fdc",
+        "user_id": "f3149387-0912-4044-a553-e34c69379e3b",
+        "name": "Morning List"
+      },
+      {
+        "id": "d58c05df-538a-4ee0-b2ea-ded0765fe9cb",
+        "user_id": "8960c8b0-45e4-40ca-9a6b-9b639abdf112",
+        "name": "Evening List"
+      },
+      {
+        "id": "bdd65b49-7476-4fa6-9e20-09bbec995e08",
+        "user_id": "e1dbb67a-0c4c-4b27-a5c7-608e5dfba23e",
+        "name": "Hospital List"
+      },
+      {
+        "id": "a8c2471e-ebb6-4fcb-a1dd-39d54f78bb1e",
+        "user_id": "e1dbb67a-0c4c-4b27-a5c7-608e5dfba23e",
+        "name": "Therapy List"
+      },
+      {
+        "id": "23a0a428-1250-47ee-9b60-c7f40e190104",
+        "user_id": "1b7296b8-a7ac-4c9c-a7ed-bb8c6c89795c",
+        "name": "List with model"
+      },
+      {
+        "id": "fad5d74a-f6ff-42aa-a082-3dd385d285f6",
+        "user_id": "1b7296b8-a7ac-4c9c-a7ed-bb8c6c89795c",
+        "name": "List with model but no templates"
+      },
+      {
+        "id": "0db40619-8374-4687-8377-e2e520b25ec6",
+        "user_id": "2ca427e6-58f5-46b4-9d4c-94617b4b743b",
+        "name": "Archived List",
+        "status": 2
+      }
+    ]
+  },
+  {
+    "model": "PAVAModel",
+    "records": [
+      {
+        "id": "40e91941-086a-4019-b914-681648342a21",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104",
+        "date_created": "2020-09-17T12:10:45.00"
+      },
+      {
+        "id": "de0bafdb-4564-43c8-8f68-b666afb9d8d4",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104",
+        "date_created": "2020-09-17T11:09:35.00"
+      },
+      {
+        "id": "11b3c1aa-4b4a-4447-8010-21e4f3ecc192",
+        "list_id": "fad5d74a-f6ff-42aa-a082-3dd385d285f6",
+        "date_created": "2020-09-22T12:23:56.00"
+      }
+    ]
+  },
+  {
+    "model": "PAVASession",
+    "records": [
+      {
+        "id": "063fbe3c-16ba-403d-a366-68ea0ccd4a7c",
+        "list_id": "d000ae57-5576-46c8-aabe-8e47602bbf03"
+      },
+      {
+        "id": "fecb5a31-f603-4d8d-b935-8ca80c731b17",
+        "list_id": "d000ae57-5576-46c8-aabe-8e47602bbf03"
+      },
+      {
+        "id": "ab175bfc-7c36-483a-9c4d-7a1df98d3ae8",
+        "list_id": "a8c2471e-ebb6-4fcb-a1dd-39d54f78bb1e"
+      },
+      {
+        "id": "5d4fa5c6-5a4a-4265-bc5c-2011932897e2",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104"
+      },
+      {
+        "id": "bcceb142-ee55-4ddd-9aa5-9c98251d20f4",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104"
+      },
+      {
+        "id": "a123a571-e976-4664-9bd6-db8a3510c862",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104"
+      },
+      {
+        "id": "e2a60162-f354-44e4-bbaf-f66df9a6a828",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104"
+      },
+      {
+        "id": "f346f4e8-0d4b-4217-96d2-bc4ef02c5527",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104"
+      },
+      {
+        "id": "fcbee7f4-65a9-43ed-844a-f49c022c9b15",
+        "list_id": "fad5d74a-f6ff-42aa-a082-3dd385d285f6"
+      }
+    ]
+  },
+  {
+    "model": "PAVAPhrase",
+    "records": [
+      {
+        "id": "146a75a8-ac64-4cb7-9642-772edc4b1fcb",
+        "list_id": "d000ae57-5576-46c8-aabe-8e47602bbf03",
+        "content": "Turn on the TV"
+      },
+      {
+        "id": "21c8c615-57a2-4e41-a2b8-c1cd4ae540a0",
+        "list_id": "d000ae57-5576-46c8-aabe-8e47602bbf03",
+        "content": "Call my family"
+      },
+      {
+        "id": "9e0ae19c-0d80-4883-aaa9-db7ed0b4934c",
+        "list_id": "d58c05df-538a-4ee0-b2ea-ded0765fe9cb",
+        "content": "Turn on the heat"
+      },
+      {
+        "id": "2d1e2086-a22a-4a7a-abc2-c8fe48bf5ee9",
+        "list_id": "27a8dc84-c2f0-43a3-b04b-da01eb037fdc",
+        "content": "Turn on the light"
+      },
+      {
+        "id": "adfef690-12e7-46e8-95be-825ac569d550",
+        "list_id": "a8c2471e-ebb6-4fcb-a1dd-39d54f78bb1e",
+        "content": "Thank you"
+      },
+      {
+        "id": "d779dc7e-66ad-416c-8da4-df56105b6466",
+        "list_id": "a8c2471e-ebb6-4fcb-a1dd-39d54f78bb1e",
+        "content": "Move me"
+      },
+      {
+        "id": "cef0f766-5245-4bcd-90d4-8c456d6de4cc",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104",
+        "content": "Can I use the toilet?",
+        "date_created": "2020-09-17T12:10:43.00"
+      },
+      {
+        "id": "d29d9655-1285-4456-bc55-2c96b3ef5d29",
+        "list_id": "23a0a428-1250-47ee-9b60-c7f40e190104",
+        "content": "I feel unwell",
+        "date_created": "2020-09-17T12:10:43.00"
+      },
+      {
+        "id": "4fccf102-bb4f-488c-8702-c91f6c96cb90",
+        "list_id": "fad5d74a-f6ff-42aa-a082-3dd385d285f6",
+        "content": "Archived Phrase",
+        "archived": true
+      }
+    ]
+  },
+  {
+    "model": "PAVAModelSession",
+    "records": [
+      {
+        "id": "8244ec76-0d42-461e-9c8d-f6c38dbb777b",
+        "model_id": "40e91941-086a-4019-b914-681648342a21",
+        "session_id": "5d4fa5c6-5a4a-4265-bc5c-2011932897e2"
+      },
+      {
+        "id": "13b33ae6-a063-420e-b121-b1c1235a53f3",
+        "model_id": "40e91941-086a-4019-b914-681648342a21",
+        "session_id": "bcceb142-ee55-4ddd-9aa5-9c98251d20f4"
+      },
+      {
+        "id": "db12af4a-af4e-418e-bf58-4fb0c8a97130",
+        "model_id": "40e91941-086a-4019-b914-681648342a21",
+        "session_id": "a123a571-e976-4664-9bd6-db8a3510c862"
+      }
+    ]
+  },
+  {
+    "model": "PAVAModelAccuracy",
+    "records": [
+      {
+        "id": "41ac1cbf-1027-4de2-8472-c568b7009e65",
+        "model_id": "40e91941-086a-4019-b914-681648342a21",
+        "accuracy": "0.82",
+        "num_test_templates": "75",
+        "date_created": "2020-09-19T16:12:34.00"
+      },
+      {
+        "id": "9b4dff22-9cbf-487c-a858-29820cdcd72c",
+        "model_id": "40e91941-086a-4019-b914-681648342a21",
+        "accuracy": "0.77",
+        "num_test_templates": "50",
+        "date_created": "2020-09-18T15:52:32.00"
+      }
+    ]
+  },
+  {
+    "model": "PAVATemplate",
+    "records": [
+      {
+        "id": "987d664f-8b2a-4cc3-9862-d72641da0243",
+        "phrase_id": "146a75a8-ac64-4cb7-9642-772edc4b1fcb"
+      },
+      {
+        "id": "b0537b00-65c2-46d6-b3c8-f9a1790ed100",
+        "phrase_id": "21c8c615-57a2-4e41-a2b8-c1cd4ae540a0"
+      },
+      {
+        "id": "729bbdf4-0ac6-4570-9f9e-2e717ac4e1fd",
+        "session_id": "fecb5a31-f603-4d8d-b935-8ca80c731b17",
+        "phrase_id": "21c8c615-57a2-4e41-a2b8-c1cd4ae540a0"
+      },
+      {
+        "id": "7220df86-391f-4d50-815f-419d88c4a882",
+        "session_id": "ab175bfc-7c36-483a-9c4d-7a1df98d3ae8",
+        "phrase_id": "adfef690-12e7-46e8-95be-825ac569d550"
+      },
+      {
+        "id": "77272e7c-2fca-4ff5-83e3-884ea87cc881",
+        "session_id": "5d4fa5c6-5a4a-4265-bc5c-2011932897e2",
+        "phrase_id": "cef0f766-5245-4bcd-90d4-8c456d6de4cc"
+      },
+      {
+        "id": "1206ae5f-0740-4fb4-8498-62ed7057179b",
+        "session_id": "5d4fa5c6-5a4a-4265-bc5c-2011932897e2",
+        "phrase_id": "d29d9655-1285-4456-bc55-2c96b3ef5d29"
+      },
+      {
+        "id": "2633a193-954f-447e-9316-00e4329e654b",
+        "session_id": "bcceb142-ee55-4ddd-9aa5-9c98251d20f4",
+        "phrase_id": "cef0f766-5245-4bcd-90d4-8c456d6de4cc"
+      },
+      {
+        "id": "686803bb-5cb1-4b7a-a0f9-2a44368085fa",
+        "session_id": "bcceb142-ee55-4ddd-9aa5-9c98251d20f4",
+        "phrase_id": "d29d9655-1285-4456-bc55-2c96b3ef5d29"
+      },
+      {
+        "id": "0d047d71-7424-441b-b9f2-530254bb84aa",
+        "session_id": "a123a571-e976-4664-9bd6-db8a3510c862",
+        "phrase_id": "cef0f766-5245-4bcd-90d4-8c456d6de4cc"
+      },
+      {
+        "id": "29ea27d6-b8b3-48f6-8ea0-adf0081ef7ea",
+        "session_id": "a123a571-e976-4664-9bd6-db8a3510c862",
+        "phrase_id": "d29d9655-1285-4456-bc55-2c96b3ef5d29"
+      },
+      {
+        "id": "5eeced1a-a045-4e1b-a4ce-7d4aa67f7404",
+        "phrase_id": "cef0f766-5245-4bcd-90d4-8c456d6de4cc"
+      },
+      {
+        "id": "77c27683-35f9-44be-b392-7c1d0ec49b93",
+        "phrase_id": "d29d9655-1285-4456-bc55-2c96b3ef5d29"
+      }
+    ]
+  }
+]

@@ -1,0 +1,147 @@
+version: '3.7'
+
+services:
+  nginx:
+    image: nginx
+    container_name: prod-nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - app
+    healthcheck:
+      test: service nginx status || exit 1
+      interval: 5m
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - sock_volume:/var/www/app/
+    networks:
+      - nginx_network
+
+  app:
+    image: liopa/visual-dtw:prod
+    container_name: prod-app
+    build:
+      target: production
+    restart: always
+    environment:
+      FLASK_ENV: production
+      DATABASE_NAME: production
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      APP_HOST: nginx
+      APP_PORT: 80
+      CFE_VERIFY: ${CFE_VERIFY}
+      CFE_PORT: 80
+    volumes:
+      - sock_volume:/tmp
+    networks:
+      - nginx_network
+      - redis_network
+
+  redis:
+    container_name: prod-redis
+    restart: always
+    networks:
+      - redis_network
+
+  celery:
+    container_name: prod-celery
+    restart: always
+    environment:
+      DATABASE_NAME: production
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    networks:
+      - redis_network
+
+  grafana:
+    image: grafana/grafana
+    container_name: prod-grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - grafana_network
+
+  loki:  # data-source for grabbing logs
+    image: grafana/loki
+    container_name: prod-loki
+    networks:
+      - grafana_network
+
+  promtail:
+    image: grafana/promtail
+    container_name: prod-promtail
+    command: -config.file=/etc/promtail/config.yaml
+    volumes:
+      - ./config/promtail/config.yaml:/etc/promtail/config.yaml
+      - /shared:/shared
+    networks:
+      - grafana_network
+
+  prometheus:  # data-source for grabbing metrics
+    image: prom/prometheus:latest
+    container_name: prod-prometheus
+    restart: always
+    volumes:
+      - ./config/prometheus/config.yaml:/etc/prometheus/prometheus.yml
+      - prometheus_volume:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    expose:
+      - 9090
+    networks:
+      - grafana_network
+
+  node-exporter:  # exports node metrics
+    image: prom/node-exporter:latest
+    container_name: prod-node-exporter
+    restart: always
+    expose:
+      - 9100
+    networks:
+      - grafana_network
+
+  cadvisor:  # exports docker container metrics
+    image: google/cadvisor:latest
+    container_name: prod-cadvisor
+    restart: always
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    expose:
+      - 8080
+    networks:
+      - grafana_network
+
+  postgres-exporter:  # exports postgres metrics
+    image: wrouesnel/postgres_exporter
+    container_name: prod-postgres-exporter
+    restart: always
+    environment:
+      DATA_SOURCE_USER: ${DATABASE_USER}
+      DATA_SOURCE_PASS: ${DATABASE_PASSWORD}
+    expose:
+      - 9187
+    networks:
+      - grafana_network
+
+networks:
+  nginx_network:
+    driver: bridge
+
+  redis_network:
+    driver: bridge
+
+  grafana_network:
+    driver: bridge
+
+volumes:
+  volume:
+  sock_volume:
+  prometheus_volume:
